@@ -1,53 +1,68 @@
-body, html {
+/* Global Styles */
+body,
+html {
     margin: 0;
     font-family: 'Orbitron', sans-serif; /* Futuristic font */
     background: linear-gradient(135deg, #000000 0%, #2a2a2a 100%); /* Black to dark gray gradient */
     height: 100vh;
     overflow: hidden;
     color: #fff;
+    line-height: 1.6; /* Improved readability */
 }
 
+/* Content Container */
 .content {
     margin: 0 auto;
-    width: 400px;
+    max-width: 400px;
     padding: 20px;
-    background: rgba(255, 255, 255, 0.05); /* Very subtle white transparency */
+    background: rgba(255, 255, 255, 0.05); /* Subtle white transparency */
     border: 2px solid #ffffff; /* White neon border */
     border-radius: 10px;
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3), 0 0 40px rgba(255, 255, 255, 0.1); /* White neon glow */
+    box-shadow: 
+        0 0 20px rgba(255, 255, 255, 0.3), /* Outer glow */
+        0 0 40px rgba(255, 255, 255, 0.1); /* Inner glow */
     position: relative;
     top: 50%;
     transform: translateY(-50%);
+    transition: all 0.3s ease; /* Smooth hover effect */
 }
 
-table, td, th {
-    border: 1px solid #ffffff; /* White borders */
+.content:hover {
+    box-shadow: 
+        0 0 30px rgba(255, 255, 255, 0.5), /* Enhanced glow on hover */
+        0 0 60px rgba(255, 255, 255, 0.2);
 }
 
+/* Table Styling */
 table {
-    border-collapse: collapse;
     width: 100%;
+    border-collapse: collapse;
     background: rgba(0, 0, 0, 0.8); /* Dark background for table */
+    border: 1px solid #ffffff; /* White border */
+    border-radius: 5px; /* Rounded corners */
+    overflow: hidden; /* Ensures rounded corners work */
+    margin-bottom: 20px;
 }
 
-th {
-    height: 30px;
-    background: #ffffff; /* White header */
-    color: #000000; /* Black text for contrast */
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-
-td {
+th, td {
+    border: 1px solid #ffffff; /* White borders */
     text-align: center;
     padding: 10px;
     color: #fff;
     transition: all 0.3s ease; /* Smooth hover effect */
 }
 
+th {
+    background: #ffffff; /* White header */
+    color: #000000; /* Black text for contrast */
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
 td:hover {
     background: rgba(255, 255, 255, 0.2); /* Subtle white hover effect */
     transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3); /* Neon glow on hover */
 }
 
 td a {
@@ -64,16 +79,17 @@ td a:hover {
     box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
 }
 
-/* Styling the form (used in both main and update pages) */
+/* Form Styling */
 form {
-    margin-top: 20px;
     display: flex;
     gap: 10px;
     justify-content: center;
+    align-items: center;
+    margin-top: 20px;
 }
 
 input[type="text"] {
-    width: 70%;
+    flex: 1;
     padding: 10px;
     border: 2px solid #ffffff;
     background: rgba(0, 0, 0, 0.7);
@@ -107,11 +123,10 @@ input[type="submit"]:hover {
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
 
-/* Flickering animation for a futuristic effect */
+/* Flickering Animation */
 @keyframes flicker {
-    0% { opacity: 0.5; }
+    0%, 100% { opacity: 0.5; }
     50% { opacity: 0.8; }
-    100% { opacity: 0.5; }
 }
 
 body::before {
@@ -126,7 +141,7 @@ body::before {
     z-index: -1;
 }
 
-/* Styling for the "no tasks" message */
+/* No Tasks Message */
 .content h4 {
     text-align: center;
     font-size: 18px;
@@ -136,12 +151,30 @@ body::before {
     font-weight: normal;
 }
 
-/* Styling for the "Task Master" and "Update Task" titles */
+/* Titles */
 .content h1 {
     text-align: center;
     font-size: 32px;
     color: #fff;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 20px rgba(255, 255, 255, 0.2);
+    text-shadow: 
+        0 0 10px rgba(255, 255, 255, 0.5), 
+        0 0 20px rgba(255, 255, 255, 0.2);
     margin-bottom: 20px;
     letter-spacing: 3px;
+}
+
+/* Accessibility Improvements */
+@media (max-width: 600px) {
+    .content {
+        width: 90%; /* Adjust for smaller screens */
+        padding: 15px;
+    }
+
+    table {
+        font-size: 14px; /* Smaller font for better fit */
+    }
+
+    input[type="text"], input[type="submit"] {
+        font-size: 14px; /* Smaller inputs for better fit */
+    }
 }
